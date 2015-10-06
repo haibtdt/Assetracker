@@ -14,9 +14,9 @@ import CoreData
 
 extension AssetClass {
 
-    @NSManaged var name: String?
-    @NSManaged var identifier: String?
-    @NSManaged var summary: String?
-    @NSManaged var assets: NSSet?
+    @NSManaged public var name: String?
+    @NSManaged public var identifier: String?
+    @NSManaged public var summary: String?
+    @NSManaged public var assets: NSSet?
 
 }

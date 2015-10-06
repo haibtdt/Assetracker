@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import Assetracker
 
 class DetailViewController: UIViewController {
 
     @IBOutlet weak var detailDescriptionLabel: UILabel!
 
 
-    var detailItem: AnyObject? {
+    var detailItem: AssetClass? {
         didSet {
             // Update the view.
             self.configureView()
@@ -35,10 +36,6 @@ class DetailViewController: UIViewController {
         self.configureView()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
 
 }

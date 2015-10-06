@@ -7,12 +7,23 @@
 //
 
 import UIKit
+import Assetracker
 
 class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
-    var objects = [AnyObject]()
-
+    var assetClasses = [AssetClass]()
+    var assetTracker_ : AssetTracker! = nil
+    var assetTracker : AssetTracker {
+        
+        if assetTracker_ != nil { return assetTracker_ }
+        let defaultFileManager = NSFileManager.defaultManager()
+        let assetDirURL = try! defaultFileManager.URLForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true)
+        assetTracker_ = AssetTracker(assetDirectoryURL: assetDirURL)
+        return assetTracker_
+        
+        
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +36,10 @@ class MasterViewController: UITableViewController {
             let controllers = split.viewControllers
             self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
+        
+        // Retrieve all asset classes
+        assetClasses = assetTracker.allAssetClasses
+        
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -32,15 +47,17 @@ class MasterViewController: UITableViewController {
         super.viewWillAppear(animated)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
     func insertNewObject(sender: AnyObject) {
-        objects.insert(NSDate(), atIndex: 0)
-        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
-        self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+
+        if let addedClass = assetTracker.addAssetClass(NSDate().description) {
+            
+            assetClasses.append(addedClass)
+            let insertedIndexPath = NSIndexPath(forRow: 0, inSection: 0)
+            tableView.insertRowsAtIndexPaths([insertedIndexPath], withRowAnimation: UITableViewRowAnimation.Right)
+            
+        }
+        
     }
 
     // MARK: - Segues
@@ -48,9 +65,9 @@ class MasterViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
-                let object = objects[indexPath.row] as! NSDate
+                let assetClass = assetClasses[indexPath.row]
                 let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
-                controller.detailItem = object
+                controller.detailItem = assetClass
                 controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
@@ -64,14 +81,14 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objects.count
+        return assetClasses.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
 
-        let object = objects[indexPath.row] as! NSDate
-        cell.textLabel!.text = object.description
+        let object = assetClasses[indexPath.row]
+        cell.textLabel!.text = object.name
         return cell
     }
 
@@ -82,7 +99,7 @@ class MasterViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            objects.removeAtIndex(indexPath.row)
+            assetClasses.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
