@@ -41,6 +41,46 @@ public class AssetTracker {
     }
     
     
+    public var allAssetClasses : [AssetClass] {
+        
+        let fetchRequest = NSFetchRequest(entityName: AssetClass.entityName)
+        fetchRequest.predicate = NSPredicate(value: true)
+        let results = (try? persistenceSetup.context.executeFetchRequest(fetchRequest)) as? [AssetClass]
+        return results ?? []
+
+        
+    }
+    
+    public func addAssetClass(
+        name : String,
+        var identifier : String = "",
+        summary : String? = ""
+        ) -> AssetClass? {
+            
+            if identifier.isEmpty {
+                
+                identifier = name
+                
+            }
+            
+            let addedClass = NSEntityDescription.insertNewObjectForEntityForName(AssetClass.entityName, inManagedObjectContext: persistenceSetup.context) as! AssetClass
+            addedClass.name = name
+            addedClass.identifier = identifier
+            addedClass.summary = summary
+            
+            do {
+                
+                try persistenceSetup.context.save()
+                return addedClass
+                
+            } catch {
+            
+                return nil
+                
+            }
+            
+    }
+    
     public func addAsset(
         name : String,
         identifier : String,
