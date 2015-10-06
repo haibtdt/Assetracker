@@ -21,6 +21,11 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             self.configureView()
         }
     }
+    @IBAction func addAsset(sender: AnyObject) {
+        
+        
+        
+    }
 
     func configureView() {
         // Update the user interface for the detail item.

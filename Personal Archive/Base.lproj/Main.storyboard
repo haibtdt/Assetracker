@@ -33,7 +33,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mag-6F-es7">
-                                <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -45,15 +45,19 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="mag-6F-es7" firstAttribute="top" secondItem="svH-Pt-448" secondAttribute="top" id="Lo5-dE-rBi"/>
                             <constraint firstItem="mag-6F-es7" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leading" id="NvM-1c-FBA"/>
                             <constraint firstItem="GAO-Cl-Wes" firstAttribute="top" secondItem="mag-6F-es7" secondAttribute="bottom" id="QCq-eG-Hwg"/>
-                            <constraint firstItem="mag-6F-es7" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" id="dnK-IF-P68"/>
                             <constraint firstAttribute="trailing" secondItem="mag-6F-es7" secondAttribute="trailing" id="sf2-Kl-7Gv"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="5VP-3U-DFf"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="5VP-3U-DFf">
+                            <connections>
+                                <action selector="addAsset:" destination="JEX-9P-axG" id="FgY-Yd-6IR"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="mag-6F-es7" id="PS6-8i-gIN"/>
