@@ -9,8 +9,9 @@
 import Foundation
 import CoreData
 
-class Asset: NSManagedObject {
+public class Asset: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
+    static let entityName = "Asset"
 
 }

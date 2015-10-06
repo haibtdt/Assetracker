@@ -8,6 +8,7 @@
         <attribute name="customStorageURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dateAdded" attributeType="Date" syncable="YES"/>
         <attribute name="filePath" optional="YES" transient="YES" attributeType="String" syncable="YES"/>
+        <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="classes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AssetClass" inverseName="assets" inverseEntity="AssetClass" syncable="YES"/>
     </entity>
     <entity name="AssetClass" representedClassName=".AssetClass" syncable="YES">
@@ -17,7 +18,7 @@
         <relationship name="assets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Asset" inverseName="classes" inverseEntity="Asset" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Asset" positionX="-63" positionY="-18" width="128" height="163"/>
+        <element name="Asset" positionX="-63" positionY="-18" width="128" height="178"/>
         <element name="AssetClass" positionX="151" positionY="-31" width="128" height="103"/>
     </elements>
 </model>
