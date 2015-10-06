@@ -14,14 +14,14 @@ import CoreData
 
 extension Asset {
 
-    @NSManaged var assetID: String?
-    @NSManaged var assetName: String?
-    @NSManaged var summary: String?
+    @NSManaged public var assetID: String?
+    @NSManaged public var assetName: String?
+    @NSManaged public var summary: String?
     @NSManaged var customStorageURL: String?
-    @NSManaged var assetFileSize: NSNumber?
-    @NSManaged var filePath: String?
-    @NSManaged var dateAdded: NSDate?
-    @NSManaged var assetFileName: String?
-    @NSManaged var classes: NSSet?
+    @NSManaged public var assetFileSize: NSNumber?
+    @NSManaged public var filePath: String?
+    @NSManaged public var dateAdded: NSDate?
+    @NSManaged public  var assetFileName: String?
+    @NSManaged public var classes: NSSet?
 
 }

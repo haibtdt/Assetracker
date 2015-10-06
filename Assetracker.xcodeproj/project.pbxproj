@@ -24,6 +24,7 @@
 		46CC88391BC3874400A37F35 /* Personal_ArchiveUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CC88381BC3874400A37F35 /* Personal_ArchiveUITests.swift */; };
 		46CC88441BC3875700A37F35 /* Assetracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46CC87F41BC27D3B00A37F35 /* Assetracker.framework */; };
 		46CC88451BC3875700A37F35 /* Assetracker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 46CC87F41BC27D3B00A37F35 /* Assetracker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		46CC884A1BC3CDE500A37F35 /* unread_indicator.png in Resources */ = {isa = PBXBuildFile; fileRef = 46CC88491BC3CDE500A37F35 /* unread_indicator.png */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		46CC88341BC3874400A37F35 /* Personal ArchiveUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Personal ArchiveUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		46CC88381BC3874400A37F35 /* Personal_ArchiveUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Personal_ArchiveUITests.swift; sourceTree = "<group>"; };
 		46CC883A1BC3874400A37F35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46CC88491BC3CDE500A37F35 /* unread_indicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unread_indicator.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +181,7 @@
 		46CC88151BC3874300A37F35 /* Personal Archive */ = {
 			isa = PBXGroup;
 			children = (
+				46CC88491BC3CDE500A37F35 /* unread_indicator.png */,
 				46CC88161BC3874300A37F35 /* AppDelegate.swift */,
 				46CC88181BC3874300A37F35 /* MasterViewController.swift */,
 				46CC881A1BC3874300A37F35 /* DetailViewController.swift */,
@@ -356,6 +359,7 @@
 			files = (
 				46CC88231BC3874300A37F35 /* LaunchScreen.storyboard in Resources */,
 				46CC88201BC3874300A37F35 /* Assets.xcassets in Resources */,
+				46CC884A1BC3CDE500A37F35 /* unread_indicator.png in Resources */,
 				46CC881E1BC3874300A37F35 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -680,6 +684,7 @@
 				46CC883D1BC3874400A37F35 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		46CC883E1BC3874400A37F35 /* Build configuration list for PBXNativeTarget "Personal ArchiveTests" */ = {
 			isa = XCConfigurationList;
@@ -688,6 +693,7 @@
 				46CC88401BC3874400A37F35 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		46CC88411BC3874400A37F35 /* Build configuration list for PBXNativeTarget "Personal ArchiveUITests" */ = {
 			isa = XCConfigurationList;
@@ -696,6 +702,7 @@
 				46CC88431BC3874400A37F35 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

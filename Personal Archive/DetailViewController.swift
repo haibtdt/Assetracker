@@ -9,11 +9,12 @@
 import UIKit
 import Assetracker
 
-class DetailViewController: UIViewController {
-
-    @IBOutlet weak var detailDescriptionLabel: UILabel!
+class DetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
 
+    @IBOutlet weak var tableView: UITableView!
+
+    var allAssets : [Asset] = []
     var detailItem: AssetClass? {
         didSet {
             // Update the view.
@@ -23,10 +24,10 @@ class DetailViewController: UIViewController {
 
     func configureView() {
         // Update the user interface for the detail item.
-        if let detail = self.detailItem {
-            if let label = self.detailDescriptionLabel {
-                label.text = detail.description
-            }
+        if let assets = self.detailItem?.assets as? Set<Asset>{
+
+            allAssets = Array(assets)
+            
         }
     }
 
@@ -37,6 +38,30 @@ class DetailViewController: UIViewController {
     }
 
 
+//    TableView protocols
+    let cellIdentifier = "vn.haibui.AssetCell"
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)
+        if cell == nil {
+            
+            cell = UITableViewCell(style: .Default, reuseIdentifier: cellIdentifier)
+            
+        }
+        let asset = allAssets[indexPath.row]
+        cell?.textLabel?.text = asset.assetName
+        
+        
+        return cell!
+        
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return allAssets.count
+        
+        
+    }
 
 }
 
