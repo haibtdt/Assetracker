@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		46CC87F81BC27D3B00A37F35 /* Assetracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 46CC87F71BC27D3B00A37F35 /* Assetracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		46CC88011BC280D900A37F35 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 46CC87FF1BC280D900A37F35 /* Model.xcdatamodeld */; settings = {ASSET_TAGS = (); }; };
+		46CC88081BC36E5A00A37F35 /* Asset+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CC88041BC36E5A00A37F35 /* Asset+CoreDataProperties.swift */; settings = {ASSET_TAGS = (); }; };
+		46CC88091BC36E5A00A37F35 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CC88051BC36E5A00A37F35 /* Asset.swift */; settings = {ASSET_TAGS = (); }; };
+		46CC880A1BC36E5A00A37F35 /* AssetClass+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CC88061BC36E5A00A37F35 /* AssetClass+CoreDataProperties.swift */; settings = {ASSET_TAGS = (); }; };
+		46CC880B1BC36E5A00A37F35 /* AssetClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CC88071BC36E5A00A37F35 /* AssetClass.swift */; settings = {ASSET_TAGS = (); }; };
+		46CC880F1BC36F5E00A37F35 /* AssetTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CC880E1BC36F5E00A37F35 /* AssetTracker.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -16,6 +21,11 @@
 		46CC87F71BC27D3B00A37F35 /* Assetracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Assetracker.h; sourceTree = "<group>"; };
 		46CC87F91BC27D3B00A37F35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46CC88001BC280D900A37F35 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		46CC88041BC36E5A00A37F35 /* Asset+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Asset+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		46CC88051BC36E5A00A37F35 /* Asset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
+		46CC88061BC36E5A00A37F35 /* AssetClass+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AssetClass+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		46CC88071BC36E5A00A37F35 /* AssetClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetClass.swift; sourceTree = "<group>"; };
+		46CC880E1BC36F5E00A37F35 /* AssetTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AssetTracker.swift; path = ../AssetTracker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +58,11 @@
 		46CC87F61BC27D3B00A37F35 /* Assetracker */ = {
 			isa = PBXGroup;
 			children = (
+				46CC880E1BC36F5E00A37F35 /* AssetTracker.swift */,
+				46CC88041BC36E5A00A37F35 /* Asset+CoreDataProperties.swift */,
+				46CC88051BC36E5A00A37F35 /* Asset.swift */,
+				46CC88061BC36E5A00A37F35 /* AssetClass+CoreDataProperties.swift */,
+				46CC88071BC36E5A00A37F35 /* AssetClass.swift */,
 				46CC88031BC280E900A37F35 /* Supporting Files */,
 				46CC88021BC280DF00A37F35 /* Resources */,
 			);
@@ -109,6 +124,7 @@
 		46CC87EB1BC27D3B00A37F35 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = vn.haibui;
 				TargetAttributes = {
@@ -149,7 +165,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46CC88091BC36E5A00A37F35 /* Asset.swift in Sources */,
+				46CC88081BC36E5A00A37F35 /* Asset+CoreDataProperties.swift in Sources */,
 				46CC88011BC280D900A37F35 /* Model.xcdatamodeld in Sources */,
+				46CC880B1BC36E5A00A37F35 /* AssetClass.swift in Sources */,
+				46CC880F1BC36F5E00A37F35 /* AssetTracker.swift in Sources */,
+				46CC880A1BC36E5A00A37F35 /* AssetClass+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,6 +269,7 @@
 		46CC87FD1BC27D3B00A37F35 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -258,12 +280,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = vn.haibui.Assetracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		46CC87FE1BC27D3B00A37F35 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
