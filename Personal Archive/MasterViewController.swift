@@ -20,6 +20,10 @@ class MasterViewController: UITableViewController {
         let defaultFileManager = NSFileManager.defaultManager()
         let assetDirURL = try! defaultFileManager.URLForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true)
         assetTracker_ = AssetTracker(assetDirectoryURL: assetDirURL)
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.assetTracker = assetTracker_
+        
         return assetTracker_
         
         
@@ -67,7 +71,7 @@ class MasterViewController: UITableViewController {
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let assetClass = assetClasses[indexPath.row]
                 let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
-                controller.detailItem = assetClass
+                controller.assetClass = assetClass
                 controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }

@@ -13,9 +13,15 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
 
 
     @IBOutlet weak var tableView: UITableView!
+    var assetTracker : AssetTracker {
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        return appDelegate.assetTracker!
+        
+    }
 
     var allAssets : [Asset] = []
-    var detailItem: AssetClass? {
+    var assetClass: AssetClass? {
         didSet {
             // Update the view.
             self.configureView()
@@ -23,13 +29,28 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     }
     @IBAction func addAsset(sender: AnyObject) {
         
+        let sampleFileURL = NSBundle.mainBundle().URLForResource("unread_indicator", withExtension: "png")!
+        if let addedAsset = assetTracker.addAsset(
+            (sampleFileURL.lastPathComponent)!,
+            identifier: "an effective identifier goes here",
+            summary: "sample summary",
+            fromFileURL: sampleFileURL,
+            assetClasses : Set(arrayLiteral: assetClass!)
+            ) {
+                
+                
+                allAssets.append(addedAsset)
+                let insertedIndexPath = NSIndexPath(forRow: 0, inSection: 0)
+                tableView?.insertRowsAtIndexPaths([insertedIndexPath], withRowAnimation: .Right)
+                
+        }
         
         
     }
 
     func configureView() {
         // Update the user interface for the detail item.
-        if let assets = self.detailItem?.assets as? Set<Asset>{
+        if let assets = self.assetClass?.assets as? Set<Asset>{
 
             allAssets = Array(assets)
             
