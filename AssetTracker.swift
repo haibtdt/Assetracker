@@ -81,6 +81,20 @@ public class AssetTracker {
             
     }
     
+    public func removeAssetClass (assetClass : AssetClass) throws -> Bool {
+        
+        guard true else {
+            
+            
+        }
+        
+        persistenceSetup.context.deleteObject(assetClass)
+        try persistenceSetup.context.save()
+        
+        return true
+        
+    }
+    
     public func addAsset(
         name : String,
         identifier : String,
@@ -126,6 +140,7 @@ public class AssetTracker {
                 
             } catch {
                 
+                persistenceSetup.context.deleteObject(addedAsset)
                 return nil
                 
             }
@@ -141,9 +156,7 @@ public class AssetTracker {
             
         }
         
-        //remove the physical file
-        let assetURL = NSURL(fileURLWithPath: (assetToRemove.filePath)!)
-        try NSFileManager.defaultManager().removeItemAtURL(assetURL)
+        try NSFileManager.defaultManager().removeItemAtPath(assetToRemove.filePath!)
         
         //remove the metadata
         persistenceSetup.context.deleteObject(assetToRemove)

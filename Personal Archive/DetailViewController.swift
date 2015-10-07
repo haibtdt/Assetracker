@@ -93,7 +93,13 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         if editingStyle == .Delete {
 
             let assetToDelete = allAssets[indexPath.row]
-            if let deleted = try? assetTracker.removeAsset(assetToDelete) {
+            if let deleted = try? assetTracker.removeAsset(assetToDelete){
+                
+                guard deleted else {
+                    
+                    return
+                    
+                }
                 
                 allAssets.removeAtIndex(indexPath.row)
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
