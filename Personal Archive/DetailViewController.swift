@@ -75,7 +75,14 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             
         }
         let asset = allAssets[indexPath.row]
-        cell?.textLabel?.text = asset.assetName
+        if let image = try? UIImage(contentsOfFile: assetTracker.getAssetPath(asset)) {
+            
+            cell?.imageView?.image = image
+            
+        }
+        cell?.detailTextLabel?.text = asset.dateLastAccessed?.description
+        cell?.textLabel?.text = "\(asset.assetName!) - \(asset.dateLastAccessed!)"
+        
         
         
         return cell!

@@ -195,6 +195,23 @@ public class AssetTracker {
         
     }
     
+    
+    public func getAssetPath( asset : Asset ) throws -> String {
+        
+        asset.dateLastAccessed = NSDate()
+        try persistenceSetup.context.save()
+        if asset.filePath == nil {
+            
+            let destinationAssetURL = assetDirectoryURL.URLByAppendingPathComponent(asset.assetFileName!)
+            asset.filePath = destinationAssetURL.path
+
+            
+        }
+        
+        return asset.filePath!
+        
+    }
+    
 }
 
 

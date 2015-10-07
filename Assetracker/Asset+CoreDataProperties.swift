@@ -19,9 +19,10 @@ extension Asset {
     @NSManaged public var summary: String?
     @NSManaged var customStorageURL: String?
     @NSManaged public var assetFileSize: NSNumber?
-    @NSManaged public var filePath: String?
+    @NSManaged var filePath: String?
     @NSManaged public var dateAdded: NSDate?
-    @NSManaged public  var assetFileName: String?
+    @NSManaged public var dateLastAccessed: NSDate?
+    @NSManaged public var assetFileName: String?
     @NSManaged public var classes: NSSet?
 
 }
