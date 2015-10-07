@@ -105,6 +105,24 @@ class MasterViewController: UITableViewController {
         if editingStyle == .Delete {
             
             let assetClass = assetClasses[indexPath.row]
+            
+            // first, remove all contained assets
+            if let deleted = try? assetTracker.removeAssetsWithinClass(assetClass) {
+                
+                guard deleted else {
+                    
+                    return
+                    
+                }
+                
+                
+            } else {
+                
+                return
+                
+            }
+            
+            // with the previous step done successfully, remote the asset class itself
             if let deleted = try? assetTracker.removeAssetClass(assetClass){
                 
                 guard deleted else {
@@ -119,7 +137,9 @@ class MasterViewController: UITableViewController {
             }
             
         } else if editingStyle == .Insert {
+            
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+            
         }
     }
 

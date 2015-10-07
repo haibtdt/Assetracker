@@ -40,7 +40,7 @@ public class AssetTracker {
         
     }
     
-    
+//    MARK: asset class
     public var allAssetClasses : [AssetClass] {
         
         let fetchRequest = NSFetchRequest(entityName: AssetClass.entityName)
@@ -95,6 +95,8 @@ public class AssetTracker {
         
     }
     
+    
+//    MARK: asset
     public func addAsset(
         name : String,
         identifier : String,
@@ -176,6 +178,19 @@ public class AssetTracker {
             
         }
         try persistenceSetup.context.save()
+        return true
+        
+    }
+    
+    public func removeAssetsWithinClass ( assetClass : AssetClass ) throws -> Bool {
+        
+        if let assets = assetClass.assets as? Set<Asset>{
+            
+            let assetsToRemov = Array(assets)
+            try removeAssets(assetsToRemov)
+            
+        }
+        
         return true
         
     }
