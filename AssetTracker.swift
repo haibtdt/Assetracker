@@ -104,6 +104,8 @@ public class AssetTracker {
             addedAsset.assetName = name
             addedAsset.assetID = identifier
             addedAsset.summary = summary
+            let destinationAssetURL = assetDirectoryURL.URLByAppendingPathComponent(fileName)
+            addedAsset.filePath = destinationAssetURL.path
             
             //optional attributes
             addedAsset.assetFileSize = NSNumber(longLong: fileSize) //TODO: calculate if unspecified
@@ -118,7 +120,7 @@ public class AssetTracker {
             do {
                 
                 // move the asset source file to the storage directory
-                try NSFileManager.defaultManager().copyItemAtURL(sourceFileURL, toURL: assetDirectoryURL.URLByAppendingPathComponent(fileName))
+                try NSFileManager.defaultManager().copyItemAtURL(sourceFileURL, toURL: destinationAssetURL)
                 try persistenceSetup.context.save()
                 return addedAsset
                 
@@ -130,6 +132,26 @@ public class AssetTracker {
             
     }
     
+    
+    public func removeAsset( assetToRemove : Asset ) throws -> Bool {
+        
+        guard true else {
+            
+            
+            
+        }
+        
+        //remove the physical file
+        let assetURL = NSURL(fileURLWithPath: (assetToRemove.filePath)!)
+        try NSFileManager.defaultManager().removeItemAtURL(assetURL)
+        
+        //remove the metadata
+        persistenceSetup.context.deleteObject(assetToRemove)
+        try persistenceSetup.context.save()
+
+        return true
+        
+    }
     
 }
 

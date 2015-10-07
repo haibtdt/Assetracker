@@ -40,7 +40,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
                 
                 
                 allAssets.append(addedAsset)
-                let insertedIndexPath = NSIndexPath(forRow: 0, inSection: 0)
+                let insertedIndexPath = NSIndexPath(forRow: allAssets.count-1, inSection: 0)
                 tableView?.insertRowsAtIndexPaths([insertedIndexPath], withRowAnimation: .Right)
                 
         }
@@ -88,6 +88,31 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         
         
     }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+
+            let assetToDelete = allAssets[indexPath.row]
+            if let deleted = try? assetTracker.removeAsset(assetToDelete) {
+                
+                allAssets.removeAtIndex(indexPath.row)
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+
+                
+            } else {
+                
+                
+                
+            }
+            
+        } else if editingStyle == .Insert {
+            
+            
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+        }
+    }
+
+    
 
 }
 

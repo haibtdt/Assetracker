@@ -57,7 +57,7 @@ class MasterViewController: UITableViewController {
         if let addedClass = assetTracker.addAssetClass(NSDate().description) {
             
             assetClasses.append(addedClass)
-            let insertedIndexPath = NSIndexPath(forRow: 0, inSection: 0)
+            let insertedIndexPath = NSIndexPath(forRow: assetClasses.count-1, inSection: 0)
             tableView.insertRowsAtIndexPaths([insertedIndexPath], withRowAnimation: UITableViewRowAnimation.Right)
             
         }
