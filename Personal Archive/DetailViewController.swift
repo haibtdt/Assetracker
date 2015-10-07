@@ -89,6 +89,22 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         
     }
     
+    @IBAction func removeAllAssets(sender: AnyObject) {
+        
+        if let removed = try? assetTracker.removeAssets(allAssets) {
+            
+            guard removed else {
+
+                return
+                
+            }
+            
+            configureView()
+            tableView.reloadData()
+            
+        }
+        
+    }
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
 

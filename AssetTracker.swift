@@ -166,6 +166,20 @@ public class AssetTracker {
         
     }
     
+    
+    public func removeAssets (assets : [Asset]) throws -> Bool {
+        
+        for asset in assets {
+            
+            persistenceSetup.context.deleteObject(asset)
+            try NSFileManager.defaultManager().removeItemAtPath(asset.filePath!)
+            
+        }
+        try persistenceSetup.context.save()
+        return true
+        
+    }
+    
 }
 
 
