@@ -9,7 +9,7 @@
 import UIKit
 import Assetracker
 
-class MasterViewController: UITableViewController {
+class MasterViewController: UITableViewController, AssetTrackerObserver {
 
     var detailViewController: DetailViewController? = nil
     var assetClasses = [AssetClass]()
@@ -20,6 +20,7 @@ class MasterViewController: UITableViewController {
         let defaultFileManager = NSFileManager.defaultManager()
         let assetDirURL = try! defaultFileManager.URLForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true)
         assetTracker_ = AssetTracker(assetDirectoryURL: assetDirURL)
+        assetTracker_.trackingObserver = self
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.assetTracker = assetTracker_
@@ -28,6 +29,19 @@ class MasterViewController: UITableViewController {
         
         
     }
+    
+    func assetDidAdd(asset : Asset, byTracker tracker : AssetTracker){
+        
+        print("\(tracker) did add asset: \(asset)")
+        
+    }
+    
+    func assetWillBeRemoved (asset:Asset, byTracker tracker : AssetTracker){
+        
+        print("\(tracker) will remove asset: \(asset)")
+        
+    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()

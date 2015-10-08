@@ -9,10 +9,19 @@
 import UIKit
 import CoreData
 
+public protocol AssetTrackerObserver: class {
+    
+    func assetDidAdd(asset : Asset, byTracker tracker : AssetTracker)
+    func assetWillBeRemoved (asset:Asset, byTracker tracker : AssetTracker)
+    
+}
+
 public class AssetTracker {
     
     let persistenceSetup : AssetTrackerPersistenceStackSetup
     let assetDirectoryURL : NSURL
+    
+    public weak  var trackingObserver : AssetTrackerObserver? = nil
     
     /// Creates a tracker with paths configuration
     /// - Parameter assetDirectoryURL:Where asset files are stored
@@ -139,6 +148,7 @@ public class AssetTracker {
                 // move the asset source file to the storage directory
                 try NSFileManager.defaultManager().copyItemAtURL(sourceFileURL, toURL: destinationAssetURL)
                 try persistenceSetup.context.save()
+                trackingObserver?.assetDidAdd(addedAsset, byTracker: self)
                 return addedAsset
                 
             } catch {
@@ -159,6 +169,7 @@ public class AssetTracker {
             
         }
         
+        trackingObserver?.assetWillBeRemoved(assetToRemove, byTracker: self)
         try NSFileManager.defaultManager().removeItemAtPath(assetToRemove.filePath!)
         persistenceSetup.context.deleteObject(assetToRemove)
         try persistenceSetup.context.save()
@@ -172,6 +183,7 @@ public class AssetTracker {
         
         for asset in assets {
             
+            trackingObserver?.assetWillBeRemoved(asset, byTracker: self)
             persistenceSetup.context.deleteObject(asset)
             try NSFileManager.defaultManager().removeItemAtPath(asset.filePath!)
             
