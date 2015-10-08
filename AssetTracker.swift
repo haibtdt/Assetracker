@@ -118,6 +118,12 @@ public class AssetTracker {
         
     }
     
+    func getAssetURL (asset : Asset) -> NSURL {
+        
+        let destinationAssetURL = assetDirectoryURL.URLByAppendingPathComponent(asset.assetFileName!)
+        return destinationAssetURL
+        
+    }
     
     public func addAsset(
         name : String,
@@ -125,7 +131,6 @@ public class AssetTracker {
         summary : String?,
         fromFileURL sourceFileURL : NSURL,
         fileSize : Int64 = 0,
-        customStorageURL : NSURL? = nil,
         dateAdded : NSDate = NSDate(),
         var fileName : String = "",
         assetClasses : Set<AssetClass>? = nil) -> Asset? {
@@ -142,12 +147,9 @@ public class AssetTracker {
             addedAsset.assetName = name
             addedAsset.assetID = identifier
             addedAsset.summary = summary
-            let destinationAssetURL = assetDirectoryURL.URLByAppendingPathComponent(fileName)
-            addedAsset.filePath = destinationAssetURL.path
             
             //optional attributes
             addedAsset.assetFileSize = NSNumber(longLong: fileSize) //TODO: calculate if unspecified
-            addedAsset.customStorageURL = customStorageURL?.path
             addedAsset.dateAdded = dateAdded
             addedAsset.dateLastAccessed = dateAdded
             addedAsset.assetFileName = fileName
@@ -159,7 +161,7 @@ public class AssetTracker {
             do {
                 
                 // move the asset source file to the storage directory
-                try NSFileManager.defaultManager().copyItemAtURL(sourceFileURL, toURL: destinationAssetURL)
+                try NSFileManager.defaultManager().copyItemAtURL(sourceFileURL, toURL: getAssetURL(addedAsset))
                 try persistenceSetup.context.save()
                 trackingObserver?.assetDidAdd(addedAsset, byTracker: self)
                 return addedAsset
@@ -183,7 +185,7 @@ public class AssetTracker {
         }
         
         trackingObserver?.assetWillBeRemoved(assetToRemove, byTracker: self)
-        try NSFileManager.defaultManager().removeItemAtPath(assetToRemove.filePath!)
+        try NSFileManager.defaultManager().removeItemAtURL(getAssetURL(assetToRemove))
         persistenceSetup.context.deleteObject(assetToRemove)
         try persistenceSetup.context.save()
 
@@ -198,7 +200,7 @@ public class AssetTracker {
             
             trackingObserver?.assetWillBeRemoved(asset, byTracker: self)
             persistenceSetup.context.deleteObject(asset)
-            try NSFileManager.defaultManager().removeItemAtPath(asset.filePath!)
+            try NSFileManager.defaultManager().removeItemAtURL(getAssetURL(asset))
             
         }
         try persistenceSetup.context.save()
@@ -236,7 +238,7 @@ public class AssetTracker {
         
         asset.dateLastAccessed = NSDate()
         try persistenceSetup.context.save()        
-        return asset.filePath!
+        return getAssetURL(asset).path!
         
     }
     

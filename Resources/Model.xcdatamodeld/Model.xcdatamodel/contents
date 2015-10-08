@@ -5,10 +5,8 @@
         <attribute name="assetFileSize" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="assetID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="assetName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="customStorageURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dateAdded" attributeType="Date" syncable="YES"/>
         <attribute name="dateLastAccessed" attributeType="Date" syncable="YES"/>
-        <attribute name="filePath" attributeType="String" syncable="YES"/>
         <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="classes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AssetClass" inverseName="assets" inverseEntity="AssetClass" syncable="YES"/>
     </entity>
@@ -19,7 +17,7 @@
         <relationship name="assets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Asset" inverseName="classes" inverseEntity="Asset" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Asset" positionX="-63" positionY="-18" width="128" height="195"/>
+        <element name="Asset" positionX="-63" positionY="-18" width="128" height="165"/>
         <element name="AssetClass" positionX="151" positionY="-31" width="128" height="103"/>
     </elements>
 </model>
