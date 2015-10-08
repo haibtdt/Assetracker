@@ -127,6 +127,7 @@ public class AssetTracker {
             addedAsset.assetFileSize = NSNumber(longLong: fileSize) //TODO: calculate if unspecified
             addedAsset.customStorageURL = customStorageURL?.path
             addedAsset.dateAdded = dateAdded
+            addedAsset.dateLastAccessed = dateAdded
             addedAsset.assetFileName = fileName
             addedAsset.classes = assetClasses
             
@@ -159,8 +160,6 @@ public class AssetTracker {
         }
         
         try NSFileManager.defaultManager().removeItemAtPath(assetToRemove.filePath!)
-        
-        //remove the metadata
         persistenceSetup.context.deleteObject(assetToRemove)
         try persistenceSetup.context.save()
 
@@ -196,21 +195,28 @@ public class AssetTracker {
     }
     
     
+    public func removeAssetsLastUsedEarlier(than date : NSDate) throws -> Int {
+        
+        let fetchRequest = NSFetchRequest(entityName: Asset.entityName)
+        fetchRequest.predicate = NSPredicate(format: "dateLastAccessed < %@", argumentArray: [date])
+        let suchAssets = try persistenceSetup.context.executeFetchRequest(fetchRequest)
+            
+        try removeAssets(suchAssets as! [Asset])
+        return suchAssets.count
+        
+    }
+    
+    
     public func getAssetPath( asset : Asset ) throws -> String {
         
         asset.dateLastAccessed = NSDate()
-        try persistenceSetup.context.save()
-        if asset.filePath == nil {
-            
-            let destinationAssetURL = assetDirectoryURL.URLByAppendingPathComponent(asset.assetFileName!)
-            asset.filePath = destinationAssetURL.path
-
-            
-        }
-        
+        try persistenceSetup.context.save()        
         return asset.filePath!
         
     }
+    
+    
+    
     
 }
 

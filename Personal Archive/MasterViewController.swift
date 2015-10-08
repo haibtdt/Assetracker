@@ -35,7 +35,7 @@ class MasterViewController: UITableViewController {
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
 
         let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
-        self.navigationItem.rightBarButtonItem = addButton
+        self.navigationItem.rightBarButtonItems = [self.navigationItem.rightBarButtonItem!, addButton]
         if let split = self.splitViewController {
             let controllers = split.viewControllers
             self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
@@ -63,6 +63,14 @@ class MasterViewController: UITableViewController {
         }
         
     }
+    
+    
+    @IBAction func showCleanUpUI(sender: AnyObject) {
+        
+        
+        
+    }
+    
 
     // MARK: - Segues
 

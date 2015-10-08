@@ -131,11 +131,76 @@
                             <outlet property="delegate" destination="7bK-jq-Zjz" id="RA6-mI-bju"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Master" id="Zdf-7t-Un8"/>
+                    <navigationItem key="navigationItem" title="Master" id="Zdf-7t-Un8">
+                        <barButtonItem key="rightBarButtonItem" title="Clean up" id="sI8-rt-2lX">
+                            <connections>
+                                <segue destination="K6s-uX-TTY" kind="show" id="iPq-yQ-YxH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="709" y="-630"/>
+        </scene>
+        <!--Clean Up View Controller-->
+        <scene sceneID="7lk-hg-arW">
+            <objects>
+                <viewController id="K6s-uX-TTY" customClass="CleanUpViewController" customModule="Personal_Archive" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EGS-iF-Bc8"/>
+                        <viewControllerLayoutGuide type="bottom" id="qbk-w9-CvF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="huS-sX-niU">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="zMH-Lg-AHx">
+                                <rect key="frame" x="0.0" y="110" width="320" height="216"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="216" id="bu2-cc-Tb4"/>
+                                </constraints>
+                                <date key="date" timeIntervalSinceReferenceDate="465967822.78661901">
+                                    <!--2015-10-08 03:30:22 +0000-->
+                                </date>
+                            </datePicker>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete all assets earlier than:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zvd-MZ-XgS">
+                                <rect key="frame" x="50" y="81" width="220" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HPp-Hz-RR8">
+                                <rect key="frame" x="132" y="347" width="57" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Proceed"/>
+                                <connections>
+                                    <action selector="proceedCleanUp:" destination="K6s-uX-TTY" eventType="touchUpInside" id="oc8-NF-09j"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Zvd-MZ-XgS" firstAttribute="top" secondItem="EGS-iF-Bc8" secondAttribute="bottom" constant="17" id="OY9-Ti-UFH"/>
+                            <constraint firstItem="HPp-Hz-RR8" firstAttribute="top" secondItem="zMH-Lg-AHx" secondAttribute="bottom" constant="21" id="URX-37-59c"/>
+                            <constraint firstItem="zMH-Lg-AHx" firstAttribute="top" secondItem="EGS-iF-Bc8" secondAttribute="bottom" constant="46" id="fvu-DM-H3q"/>
+                            <constraint firstItem="Zvd-MZ-XgS" firstAttribute="centerX" secondItem="huS-sX-niU" secondAttribute="centerX" id="gJv-mY-Nc2"/>
+                            <constraint firstAttribute="trailing" secondItem="zMH-Lg-AHx" secondAttribute="trailing" id="hjh-eh-Wf7"/>
+                            <constraint firstItem="zMH-Lg-AHx" firstAttribute="leading" secondItem="huS-sX-niU" secondAttribute="leading" id="iJe-2c-8fv"/>
+                            <constraint firstItem="HPp-Hz-RR8" firstAttribute="centerX" secondItem="huS-sX-niU" secondAttribute="centerX" id="zMw-4m-VR9"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="dateTimePicker" destination="zMH-Lg-AHx" id="rCI-On-Uuv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6D1-Cv-3dt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1207" y="-1131"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="r7l-gg-dq7">
@@ -155,6 +220,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Tll-UG-LXB"/>
+        <segue reference="6S0-TO-JiA"/>
     </inferredMetricsTieBreakers>
 </document>
