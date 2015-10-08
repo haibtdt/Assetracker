@@ -106,6 +106,19 @@ public class AssetTracker {
     
     
 //    MARK: asset
+    
+    public func getAsset(assetID : String) throws -> Asset? {
+        
+        let fetchRequest = NSFetchRequest(entityName: Asset.entityName)
+        fetchRequest.predicate = NSPredicate(format: "assetID == %@", argumentArray: [assetID])
+        fetchRequest.fetchLimit = 1
+        let results = (try persistenceSetup.context.executeFetchRequest(fetchRequest)) as! [Asset]
+        
+        return results.first
+        
+    }
+    
+    
     public func addAsset(
         name : String,
         identifier : String,

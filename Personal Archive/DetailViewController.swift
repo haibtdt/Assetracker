@@ -141,7 +141,17 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
 
-    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        
+        let asset = allAssets[indexPath.row]
+        let detail = self.storyboard?.instantiateViewControllerWithIdentifier("vn.haibui.AssetDetailVC") as! AssetDetailTableViewController
+        detail.assetID = asset.assetID
+        self.navigationController?.pushViewController(detail, animated: true)
+        
+        
+        
+    }
 
 }
 

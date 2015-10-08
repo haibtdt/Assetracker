@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4611AEF41BC61EA500971888 /* CleanUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4611AEF31BC61EA500971888 /* CleanUpViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		464716BF1BC669BA00325862 /* AssetDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464716BE1BC669BA00325862 /* AssetDetailTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		46CC87F81BC27D3B00A37F35 /* Assetracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 46CC87F71BC27D3B00A37F35 /* Assetracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		46CC88011BC280D900A37F35 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 46CC87FF1BC280D900A37F35 /* Model.xcdatamodeld */; settings = {ASSET_TAGS = (); }; };
 		46CC88081BC36E5A00A37F35 /* Asset+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CC88041BC36E5A00A37F35 /* Asset+CoreDataProperties.swift */; settings = {ASSET_TAGS = (); }; };
@@ -68,6 +69,7 @@
 
 /* Begin PBXFileReference section */
 		4611AEF31BC61EA500971888 /* CleanUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CleanUpViewController.swift; sourceTree = "<group>"; };
+		464716BE1BC669BA00325862 /* AssetDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetDetailTableViewController.swift; sourceTree = "<group>"; };
 		46CC87F41BC27D3B00A37F35 /* Assetracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Assetracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		46CC87F71BC27D3B00A37F35 /* Assetracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Assetracker.h; sourceTree = "<group>"; };
 		46CC87F91BC27D3B00A37F35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				46CC88181BC3874300A37F35 /* MasterViewController.swift */,
 				46CC881A1BC3874300A37F35 /* DetailViewController.swift */,
 				46CC881C1BC3874300A37F35 /* Main.storyboard */,
+				464716BE1BC669BA00325862 /* AssetDetailTableViewController.swift */,
 				46CC881F1BC3874300A37F35 /* Assets.xcassets */,
 				46CC88211BC3874300A37F35 /* LaunchScreen.storyboard */,
 				46CC88241BC3874300A37F35 /* Info.plist */,
@@ -404,6 +407,7 @@
 				46CC881B1BC3874300A37F35 /* DetailViewController.swift in Sources */,
 				4611AEF41BC61EA500971888 /* CleanUpViewController.swift in Sources */,
 				46CC88191BC3874300A37F35 /* MasterViewController.swift in Sources */,
+				464716BF1BC669BA00325862 /* AssetDetailTableViewController.swift in Sources */,
 				46CC88171BC3874300A37F35 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
