@@ -19,7 +19,7 @@ public protocol AssetTrackerObserver: class {
 public class AssetTracker {
     
     let persistenceSetup : AssetTrackerPersistenceStackSetup
-    let assetDirectoryURL : NSURL
+    public let assetDirectoryURL : NSURL
     
     public weak  var trackingObserver : AssetTrackerObserver? = nil
     
