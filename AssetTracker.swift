@@ -152,7 +152,8 @@ public class AssetTracker {
         fileSize : Int64 = 0,
         dateAdded : NSDate = NSDate(),
         var fileName : String = "",
-        assetClasses : Set<AssetClass>? = nil) -> Asset? {
+        assetClasses : Set<AssetClass>? = nil,
+        fileIsInPlace : Bool = false) -> Asset? {
             
             if fileName.isEmpty {
                 
@@ -179,8 +180,15 @@ public class AssetTracker {
             
             do {
                 
-                // move the asset source file to the storage directory
-                try NSFileManager.defaultManager().copyItemAtURL(sourceFileURL, toURL: getAssetURL(addedAsset))
+                if fileIsInPlace {
+                    
+                    
+                } else {
+                    
+                    // move the asset source file to the storage directory
+                    try NSFileManager.defaultManager().copyItemAtURL(sourceFileURL, toURL: getAssetURL(addedAsset))
+                    
+                }
                 try persistenceSetup.context.save()
                 trackingObserver?.assetDidAdd(addedAsset, byTracker: self)
                 return addedAsset
@@ -193,6 +201,8 @@ public class AssetTracker {
             }
             
     }
+    
+    
     
     
     public func removeAsset( assetToRemove : Asset ) throws -> Bool {
