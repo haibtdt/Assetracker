@@ -214,7 +214,7 @@ public class AssetTracker {
         }
         
         trackingObserver?.assetWillBeRemoved(assetToRemove, byTracker: self)
-        try NSFileManager.defaultManager().removeItemAtURL(getAssetURL(assetToRemove))
+        let _ = try? NSFileManager.defaultManager().removeItemAtURL(getAssetURL(assetToRemove))
         persistenceSetup.context.deleteObject(assetToRemove)
         try persistenceSetup.context.save()
 
@@ -229,7 +229,7 @@ public class AssetTracker {
             
             trackingObserver?.assetWillBeRemoved(asset, byTracker: self)
             persistenceSetup.context.deleteObject(asset)
-            try NSFileManager.defaultManager().removeItemAtURL(getAssetURL(asset))
+            let _ = try? NSFileManager.defaultManager().removeItemAtURL(getAssetURL(asset))
             
         }
         try persistenceSetup.context.save()
