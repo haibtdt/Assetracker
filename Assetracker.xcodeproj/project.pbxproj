@@ -27,6 +27,7 @@
 		46CC88441BC3875700A37F35 /* Assetracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46CC87F41BC27D3B00A37F35 /* Assetracker.framework */; };
 		46CC88451BC3875700A37F35 /* Assetracker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 46CC87F41BC27D3B00A37F35 /* Assetracker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		46CC884A1BC3CDE500A37F35 /* unread_indicator.png in Resources */ = {isa = PBXBuildFile; fileRef = 46CC88491BC3CDE500A37F35 /* unread_indicator.png */; settings = {ASSET_TAGS = (); }; };
+		46FADC4D1BD5E6F7002C7F2F /* BuiltInApplicationAssetTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FADC4C1BD5E6F7002C7F2F /* BuiltInApplicationAssetTracker.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,7 @@
 		46CC88381BC3874400A37F35 /* Personal_ArchiveUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Personal_ArchiveUITests.swift; sourceTree = "<group>"; };
 		46CC883A1BC3874400A37F35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46CC88491BC3CDE500A37F35 /* unread_indicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unread_indicator.png; sourceTree = "<group>"; };
+		46FADC4C1BD5E6F7002C7F2F /* BuiltInApplicationAssetTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuiltInApplicationAssetTracker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 		46CC87F61BC27D3B00A37F35 /* Assetracker */ = {
 			isa = PBXGroup;
 			children = (
+				46FADC4C1BD5E6F7002C7F2F /* BuiltInApplicationAssetTracker.swift */,
 				46CC880E1BC36F5E00A37F35 /* AssetTracker.swift */,
 				46CC88041BC36E5A00A37F35 /* Asset+CoreDataProperties.swift */,
 				46CC88051BC36E5A00A37F35 /* Asset.swift */,
@@ -397,6 +400,7 @@
 				46CC880B1BC36E5A00A37F35 /* AssetClass.swift in Sources */,
 				46CC880F1BC36F5E00A37F35 /* AssetTracker.swift in Sources */,
 				46CC880A1BC36E5A00A37F35 /* AssetClass+CoreDataProperties.swift in Sources */,
+				46FADC4D1BD5E6F7002C7F2F /* BuiltInApplicationAssetTracker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

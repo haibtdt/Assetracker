@@ -60,6 +60,25 @@ public class AssetTracker {
         
     }
     
+    public func getAssetClass (named : String) -> AssetClass? {
+        
+        
+        let fetchRequest = NSFetchRequest(entityName: AssetClass.entityName)
+        fetchRequest.predicate = NSPredicate(format: "name == %@", argumentArray: [named])
+        fetchRequest.fetchLimit = 1
+        do {
+            
+            let results = try persistenceSetup.context.executeFetchRequest(fetchRequest)
+            return (results.first as! AssetClass?)
+            
+        } catch {
+            
+            return nil
+            
+        }
+        
+    }
+    
     public func addAssetClass(
         name : String,
         var identifier : String = "",
